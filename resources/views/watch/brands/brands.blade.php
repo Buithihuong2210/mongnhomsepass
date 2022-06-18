@@ -1,4 +1,4 @@
-@extends('master.watchMaster')
+@extends('master.watchMasterAdmin')
 
 @section('main')
   <div class="container">
@@ -23,9 +23,12 @@
         <tr>
 
           <td>{{$b->name}}</td>
-          <td>
-            <img src="{{ asset('/storage/brands/'.$b->image) }}"
-                 style='max-width:250px; max-height:250px'></td>
+
+
+
+             <td><img src="{{ asset('/storage/brands/'.$b->image) }}"  style="max-width: 150px; max-height:150px"></td>
+
+
           <td><a type="button" class="btn btn-info btn-sm"
                  href="{{route('brands.show', ['id' => $b->id])}}"
             >Details</a>

@@ -7,7 +7,7 @@
 </div>
 
 <div class="form-group">
-  <label for="price" class="font-weight-bold">Price</label>
+  <label for="price" class="font-weight-bold">Price($)</label>
   <input type="text" class="form-control" id="price" name="price" value="{{old('price')?? $watchs->price}}">
 </div>
 
@@ -38,26 +38,24 @@
   <input type="file" name="file" id="file" value="{{old('image')?? $watchs->image}}">
 </div>
 
-<div class="form-group">
-  <label for="categoriesId" class="font-weight-bold">CategoriesId</label>
-  <input type="text" class="form-control" id="categoriesId" name="categoriesId" value="{{old('categoriesId')?? $watchs->categoriesId}}">
-</div>
-
-{{--@php--}}
-{{--  $cId = old('brand') ?? $products->categoriesId?? null;--}}
-{{--@endphp--}}
-
 {{--<div class="form-group">--}}
-{{--  <label for="category" class="font-weight-bold">Category</label>--}}
-{{--  <select name="category" class="form-control" id="category" required>--}}
-{{--    <option value="0">Please select a category</option>--}}
-{{--    @foreach($categories as $c)--}}
-{{--      <option value="{{ $c->id }}"--}}
-{{--        {{ ($cId != null && $c->id == $cId) ? 'selected' : '' }}--}}
-{{--      >{{ $c->name }}</option>--}}
-{{--    @endforeach--}}
+{{--  <label for="categoriesId" class="font-weight-bold">CategoriesId</label>--}}
+{{--  <input type="text" class="form-control" id="categoriesId" name="categoriesId" value="{{old('categoriesId')?? $watchs->categoriesId}}">--}}
+{{--</div>--}}
 
-</select>
+@php
+  $bId = old('brands') ?? $watchs->brandsId?? null;
+@endphp
+<div class="form-group">
+  <label for="brands" class="font-weight-bold">Brand</label>
+  <select name="brands" class="form-control" id="brands" required>
+    <option value="0">Please select a brand :)</option>
+    @foreach($brands as $b)
+      <option value="{{ $b->id }}"
+        {{ ($bId != null && $b->id == $bId) ? 'selected' : '' }}
+      >{{ $b->name }}</option>
+    @endforeach
+  </select>
 </div>
 
 

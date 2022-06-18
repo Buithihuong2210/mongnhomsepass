@@ -47,7 +47,8 @@ class WatchControllerWithRepos extends Controller
         $admins = (object)[
             'id' => $request->input('id'),
             'username' => $request->input('username'),
-            'password' => Hash::make($request-> newPassword),
+//            'password' => $request::make($request-> newPassword),
+        'password'=> $request->input('password'),
             'fullname' => $request->input('fullname'),
             'email' => $request->input('email'),
             'phone' => $request ->input('phone')
@@ -71,7 +72,6 @@ class WatchControllerWithRepos extends Controller
         );
     }
 //---------------------------------------------------------------------------------------------
-
 
 
 }

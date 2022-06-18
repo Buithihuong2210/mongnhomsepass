@@ -15,15 +15,15 @@ class WatchRepos
         return DB::select($sql);
     }
 
-//    public static function getAllProductsWithCategory() {
-//        $sql = 'select p.*, c.name as categoryName ';
-//        $sql .= 'from watchs as p ';
-//        $sql .= 'join brand as c on p.categoriesId = c.id ';
-//        $sql .= 'order by p.name';
-//
-//        return DB::select ($sql);
-//
-//    }
+    public static function getAllWatchsWithBrands() {
+        $sql = 'select w.*, b.name as brandName ';
+        $sql .= 'from watchs as w ';
+        $sql .= 'join brands as b on w.brandsId = b.id ';
+        $sql .= 'order by w.name';
+
+        return DB::select ($sql);
+
+    }
 
     public static function getWatchById($id){
         $sql = 'select w.* ';
@@ -35,11 +35,11 @@ class WatchRepos
 
     public static function insert($watchs){
         $sql = 'insert into watchs ';
-        $sql .= '(name, price, size, material, color, description, image, categoriesId) ';
+        $sql .= '(name, price, size, material, color, description, image, brandsId) ';
         $sql .= 'values (?, ?, ?, ?, ?, ?, ?, ?) ';
 
         $result =  DB::insert($sql,
-            [$watchs->name, $watchs->price, $watchs->size, $watchs->material, $watchs->color,$watchs->description, $watchs->image, $watchs->categoriesId]);
+            [$watchs->name, $watchs->price, $watchs->size, $watchs->material, $watchs->color,$watchs->description, $watchs->image, $watchs->brandsId]);
         if($result){
             return DB::getPdo()->lastInsertId();
         } else {
@@ -50,10 +50,10 @@ class WatchRepos
 
     public static function update($watchs){
         $sql = 'update watchs ';
-        $sql .= 'set name = ?, price = ?, size = ?, material = ?, color = ?, description = ?, image = ?, categoriesId = ?   ' ;
+        $sql .= 'set name = ?, price = ?, size = ?, material = ?, color = ?, description = ?, image = ?, brandsId = ?   ' ;
         $sql .= 'where id = ? ';
 
-        DB::update($sql, [$watchs->name, $watchs->price, $watchs->size, $watchs->material, $watchs->color, $watchs->description, $watchs->image, $watchs->categoriesId]);
+        DB::update($sql, [$watchs->name, $watchs->price, $watchs->size, $watchs->material, $watchs->color, $watchs->description, $watchs->image, $watchs->brandsId, $watchs->id]);
 
     }
 

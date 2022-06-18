@@ -28,6 +28,40 @@ class CustomerController extends Controller
         );
     }
 
+    public function create()
+    {
+        return view(
+            'watch.customers.signup',
+            ["customers" => (object)[
+                'id' => '',
+                'fullname' => '',
+                'dob' => '',
+                'address' => '',
+                'phone' => '',
+                'email'=> '',
+                'gender' => '',
+            ]]);
+    }
+
+    public function store(Request $request)
+    {
+//        dd($request->all());
+        $this->formValidate1($request)->validate();  //shortcut
+        $customers = (object)[
+            'fullname' => $request->input('fullname'),
+            'dob' => $request->input('dob'),
+            'address' => $request->input('address'),
+            'phone' => $request->input('phone'),
+            'email' => $request->input('email'),
+            'gender' => $request->input('gender'),
+        ];
+        $newId = CustomerRepos::insert($customers);
+
+        return redirect()->route('client.index');
+//            ->action('CustomerController@customers')
+//            ->with('msg', 'New customer with id: '.$newId.' has been inserted');
+    }
+
     public function edit($id)
     {
         $customers = CustomerRepos::getCustomerById($id); //this is always an array
@@ -67,7 +101,7 @@ class CustomerController extends Controller
                 'email' =>['required', 'e-mail'],
                 'dob'=>['required', 'after: 1902/01/01'],
                 'phone'=>['required', 'starts_with:0'],
-                'gender'=>['required', 'starts_with:M, F, T']
+//                'gender'=>['required', 'starts_with:"M", "F", "T"']
             ]
         );
     }

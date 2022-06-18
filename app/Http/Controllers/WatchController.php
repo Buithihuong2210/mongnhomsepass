@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Repository\BrandRepos;
 use App\Repository\WatchRepos;
 use Illuminate\Http\Request;
 
@@ -9,8 +10,8 @@ class WatchController extends Controller
 {
     public function watchs()
     {
-        $watchs = WatchRepos:: getAllWatch();
-//        $watchs = Repos::getAllWatchWithBrand();
+//        $watchs = WatchRepos:: getAllWatch();
+        $watchs = WatchRepos::getAllWatchsWithBrands();
         return view('watch.watchs.watchs',
             [
                 'watchs' => $watchs,
@@ -20,17 +21,18 @@ class WatchController extends Controller
     {
 
         $watchs = WatchRepos::getWatchById($id); //this is always an array of objects
-//        $categories = WatchRepos::getBrandByWatchId($id);
+        $brands = BrandRepos::getBrandByWatchId($id);
         return view('watch.watchs.show',
             [
                 'watchs' => $watchs[0], //get the first element
-//                'brands' => $brands[0]
+                'brands' => $brands[0]
             ]
         );
     }
 
     public function create()
     {
+        $brands = BrandRepos::getAllBrand();
         return view(
             'watch.watchs.new',
             ["watchs" => (object)[
@@ -42,14 +44,16 @@ class WatchController extends Controller
                 'color'=>'',
                 'description'=>'',
                 'image'=>'',
-                'categoriesId'=>''
-            ]]);
+                'brandsId'=>''
+            ],
+                "brands" => $brands
+            ]);
 
     }
 
     public function store(Request $request)
     {
-        //dd($request-> all());
+//        dd($request-> all());
         //$this->formValidate($request)->validate(); //shortcut
         if ($request->hasFile('file'))
         {
@@ -67,7 +71,7 @@ class WatchController extends Controller
             'color' => $request->input('color'),
             'description' => $request->input('description'),
             "image" => $request->file->hashName(),
-            'categoriesId' => $request->input('categoriesId'),
+            'brandsId' => $request->input('brands'),
 
         ];
 
@@ -81,30 +85,33 @@ class WatchController extends Controller
     public function edit($id)
     {
         $watchs = WatchRepos::getWatchById($id); //this is always an array
-
+        $brands = BrandRepos::getAllBrand();
 
         return view(
             'watch.watchs.update',
-            ["watchs" => $watchs[0]]);
+            ["watchs" => $watchs[0], "brands" => $brands]);
+
     }
 
     public function update(Request $request, $id)
     {
-        if ($id != $request->input('id'))
-        {
+        if ($id != $request->input('id')) {
             //id in query string must match id in hidden input
             return redirect()->action('WatchController@watchs');
         }
 
-        if ($request->hasFile('file'))
-        {
+//        dd($request-> all());
+
+        if ($request->hasFile('file')) {
             $request->validate([
                 'image' => 'mimes:jpg,jpeg,bmp,png' // Only allow .jpg, .bmp and .png file types.
             ]);
             // Save the file locally in the storage/public/ folder under a new folder named /watchs
         }
-        $request->file->store('watchs','public');
+
+        $request->file->store('watchs', 'public');
         $watchs = (object)[
+            'id' => $request->input('id'),
             'name' => $request->input('name'),
             'price' => $request->input('price'),
             'size' => $request->input('size'),
@@ -112,8 +119,7 @@ class WatchController extends Controller
             'color' => $request->input('color'),
             'description' => $request->input('description'),
             "image" => $request->file->hashName(),
-            'categoriesId' => $request->input('brand'),
-
+            'brandsId' => $request->input('brands'),
         ];
         WatchRepos::update($watchs);
 
@@ -121,12 +127,16 @@ class WatchController extends Controller
             ->with('msg', 'Update Successfully');;
     }
 
-    public function confirm($id){
+
+    public function confirm($id)
+    {
         $watchs = WatchRepos::getWatchById($id); //this is always an array
+        $brands = BrandRepos::getBrandByWatchId($id);
 
         return view('watch.watchs.confirm',
             [
-                'watchs' => $watchs[0]
+                'watchs' => $watchs[0],
+                'brands' => $brands[0]
             ]
         );
     }

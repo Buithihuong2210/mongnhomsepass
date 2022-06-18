@@ -21,6 +21,20 @@ class CustomerRepos
 
         return DB::select($sql, [$id]);
     }
+
+    public static function insert($customers){
+        $sql = 'insert into customers ';
+        $sql .= '(fullname, dob, address, phone, email, gender) ';
+        $sql .= 'values (?, ?, ?, ?, ?, ?) ';
+
+        $result =  DB::insert($sql, [$customers->fullname, $customers->dob, $customers->address, $customers->phone, $customers->email, $customers->gender]);
+        if($result){
+            return DB::getPdo()->lastInsertId();
+        } else {
+            return -1;
+        }
+    }
+
     public static function update($customers)
     {
         $sql = 'update customers ';

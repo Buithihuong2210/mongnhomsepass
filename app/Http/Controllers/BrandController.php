@@ -73,24 +73,52 @@ class BrandController extends Controller
             ["brands" => $brands[0]]);
     }
 
+//    public function update(Request $request, $id)
+//    {
+//        if ($id != $request->input('id')) {
+//            //id in query string must match id in hidden input
+//            return redirect()->action('BrandController@brands');
+//        }
+//        if ($request->hasFile('file')) {
+//
+//            $request->validate([
+//                'image' => 'mimes:jpg,jpeg,bmp,png' // Only allow .jpg, .bmp and .png file types.
+//            ]);
+//
+//            // Save the file locally in the storage/public/ folder under a new folder named /product
+//
+//        }
+//        $request->file->store('brands', 'public');
+//        //     $this->formValidate($request)->validate(); //shortcut
+//
+//        $brands = (object)[
+//            'id' => $request->input('id'),
+//            'name' => $request->input('name'),
+//            "image" => $request->file->hashName(),
+//        ];
+//        BrandRepos::update($brands);
+//
+//        return redirect()->action('BrandController@brands')
+//            ->with('msg', 'Update Successfully');;
+//    }
+
     public function update(Request $request, $id)
     {
         if ($id != $request->input('id')) {
             //id in query string must match id in hidden input
-            return redirect()->action('BrandController@index');
+            return redirect()->action('BrandController@brands');
         }
-        if ($request->hasFile('file')) {
 
+//        dd($request-> all());
+
+        if ($request->hasFile('file')) {
             $request->validate([
                 'image' => 'mimes:jpg,jpeg,bmp,png' // Only allow .jpg, .bmp and .png file types.
             ]);
-
-            // Save the file locally in the storage/public/ folder under a new folder named /product
-
+            // Save the file locally in the storage/public/ folder under a new folder named /watchs
         }
-        $request->file->store('brand', 'public');
-        //     $this->formValidate($request)->validate(); //shortcut
 
+        $request->file->store('brands', 'public');
         $brands = (object)[
             'id' => $request->input('id'),
             'name' => $request->input('name'),
@@ -98,9 +126,10 @@ class BrandController extends Controller
         ];
         BrandRepos::update($brands);
 
-        return redirect()->action('BrandController@index')
+        return redirect()->action('BrandController@brands')
             ->with('msg', 'Update Successfully');;
     }
+
 
     public function confirm($id){
         $brands = BrandRepos::getBrandById($id); //this is always an array
@@ -119,17 +148,30 @@ class BrandController extends Controller
             return redirect()->action('BrandController@index');
         }
 
+//        if($request->){
+//                $request->validate([
+//                    function ($attribute, $brands, $watchs, $fail) {
+//                        $brands = $brands->id;
+//                        $watchs = $watchs->brandsId;
+//                        if ($brands == $watchs) {
+//                            $fail('Please delete related watches!!!');
+//                        }
+//                    }
+//                ]);
+//        }
+
         BrandRepos::delete($id);
 
 
-        return redirect()->action('BrandController@index')
+        return redirect()->action('BrandController@brands')
             ->with('msg', 'Delete Successfully');
     }
 
     private function formValidate($request)
     {
         return Validator::make(
-            $request->all(),
+            $request->all(),[
+            ]
         );
     }
 }

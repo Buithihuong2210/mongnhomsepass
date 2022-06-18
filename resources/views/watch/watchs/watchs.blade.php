@@ -1,4 +1,4 @@
-@extends('master.watchMaster')
+@extends('master.watchMasterAdmin')
 
 @section('main')
   <div class="container">
@@ -11,7 +11,7 @@
       <tr>
         {{--                <th scope="col">#</th>--}}
         <th scope="col">Name</th>
-        <th scope="col">Price (VND)</th>
+        <th scope="col">Price($)</th>
         <th scope="col">Size</th>
         <th scope="col">Material</th>
         <th scope="col">Color</th>
@@ -34,7 +34,7 @@
           <td>{{$w->material}}</td>
           <td>{{$w->color}}</td>
           {{--          <td>{{$p->description}}</td>--}}
-          <td><img src="{{ asset('/storage/watchs/'.$w->image) }}"  style='max-width:250px; max-height:250px'></td>
+          <td><img src="{{ asset('/storage/watchs/'.$w->image) }}"  style="max-width:150px; max-height:150px"></td>
           {{--          <td>{{$p->categoriesId}}</td>--}}
 
 

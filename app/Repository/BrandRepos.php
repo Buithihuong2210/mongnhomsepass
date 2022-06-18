@@ -50,13 +50,13 @@ class BrandRepos
 
         DB::delete($sql, [$id]);
     }
-//    public static function getBrandByProductId($productsID)
-//    {
-//        $sql = 'select c.* ';
-//        $sql .= 'from brand as c ';
-//        $sql .= 'join watchs as p on c.id = p.categoriesId ';
-//        $sql .= 'where p.id = ?';
-//
-//        return DB::select($sql, [$productsID]);
-//    }
+    public static function getBrandByWatchId($id)
+    {
+        $sql = 'select b.* ';
+        $sql .= 'from brands as b ';
+        $sql .= 'join watchs as w on b.id = w.brandsId ';
+        $sql .= 'where w.id = ?';
+
+        return DB::select($sql, [$id]);
+    }
 }

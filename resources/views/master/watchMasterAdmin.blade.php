@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -23,7 +24,7 @@
   <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{route('watchrepos.admins')}}">
       <div class="sidebar-brand-icon rotate-n-15">
         <i class="fas fa-laugh-wink"></i>
       </div>
@@ -31,20 +32,14 @@
     </a>
 
     <!-- Divider -->
-    <hr class="sidebar-divider my-0">
-
-    <!-- Nav Item - Dashboard -->
-    <li class="nav-item active"><a class="nav-link" href="{{route('homepage.index')}}"><i class="fas fa-fw fa-tachometer-alt"></i><span>Home Page</span></a></li>
-
-    <!-- Divider -->
     <hr class="sidebar-divider">
 
     <!-- Heading -->
-    <div class="sidebar-heading" >Manage</div>
+    <div class="sidebar-heading" style="color: #1e2125" >Admin</div>
 
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
-      <a class="nav-link collapsed" href="{{route('watchrepos.admins')}}" data-toggle="collapse" aria-expanded="true">
+      <a class="nav-link collapsed" href="{{route('watchrepos.admins')}}" >
         <i class="fas fa-fw fa-cog"></i>
         <span>View all</span>
       </a>
@@ -54,19 +49,17 @@
     <hr class="sidebar-divider">
 
     <!-- Heading -->
-    <div class="sidebar-heading">Brand</div>
+    <div class="sidebar-heading" style="color: #1e2125">Brand</div>
 
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
-      <a class="nav-link collapsed" href="{{route('brands.brands')}}" data-toggle="collapse" data-target="#collapsePages"
-         aria-expanded="true" aria-controls="collapsePages">
+      <a class="nav-link collapsed" href="{{route('brands.brands')}}">
         <i class="fas fa-fw fa-folder"></i>
         <span>View All</span>
       </a>
     </li>
     <li class="nav-item">
-      <a class="nav-link collapsed" href="{{route('brands.create')}}" data-toggle="collapse" data-target="#collapsePages"
-         aria-expanded="true" aria-controls="collapsePages">
+      <a class="nav-link collapsed" href="{{route('brands.create')}}">
         <i class="fas fa-fw fa-folder"></i>
         <span>New Brand</span>
       </a>
@@ -74,19 +67,17 @@
 
     <hr class="sidebar-divider">
     <!-- Heading -->
-    <div class="sidebar-heading">Watch</div>
+    <div class="sidebar-heading" style="color: #1e2125">Watch</div>
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
-      <a class="nav-link collapsed" href="{{route('watchs.watchs')}}" data-toggle="collapse" data-target="#collapsePages"
-         aria-expanded="true" aria-controls="collapsePages">
+      <a class="nav-link collapsed" href="{{route('watchs.watchs')}}">
         <i class="fas fa-fw fa-folder"></i>
         <span>View All</span>
       </a>
 
     </li>
     <li class="nav-item">
-      <a class="nav-link collapsed" href="{{route('watchs.create')}}" data-toggle="collapse" data-target="#collapsePages"
-         aria-expanded="true" aria-controls="collapsePages">
+      <a class="nav-link collapsed" href="{{route('watchs.create')}}" >
         <i class="fas fa-fw fa-folder"></i>
         <span>Add Watch</span>
       </a>
@@ -95,10 +86,10 @@
     <hr class="sidebar-divider">
 
     <!-- Heading -->
-    <div class="sidebar-heading">Customer</div>
+    <div class="sidebar-heading" style="color: #1e2125">Customer</div>
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
-      <a class="nav-link collapsed" href="{{route('customers.customers')}}" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
+      <a class="nav-link collapsed" href="{{route('customers.customers')}}">
         <i class="fas fa-fw fa-folder"></i><span>View All</span></a>
     </li>
   </ul>
@@ -111,18 +102,9 @@
       <main role="main">
         @yield('main')
       </main>
-      <!-- Topbar -->
-{{--      <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">--}}
-        <!-- Sidebar Toggle (Topbar) -->
-        <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-          <i class="fa fa-bars"></i>
-        </button>
-      </nav>
     </div>
   </div>
 </div>
-
-
 
 <script src="vendor/jquery/jquery.min.js"></script>
 <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -138,7 +120,7 @@
 
 <!-- Page level custom scripts -->
 <script src="js/demo/chart-area-demo.js"></script>
-<script src="js/demo/chart-pie-demo.js"></script>
+{{--<script src="js/demo/chart-pie-demo.js"></script>--}}
 @yield('script')
 </body>
 </html>

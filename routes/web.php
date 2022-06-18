@@ -343,13 +343,25 @@ Route::group(['prefix' =>'customers'], function () {
         ->name('customers.show');
 //
 
+    Route::get('create', [
+        'uses' => 'CustomerController@create',
+        'as' => 'customers.create'
+    ]);
+
+    Route::post('create',[
+        'uses' => 'CustomerController@store',
+        'as' => 'customers.store'
+    ]);
+
+
+
     Route::get('update/{id}',[
         'uses' => 'CustomerController@edit',
         'as' => 'customers.edit'
     ]);
 
     Route::post('update/{id}',[
-        'uses' => 'WatchControllerWithRepos@update',
+        'uses' => 'CustomerController@update',
         'as' => 'customers.update'
     ]);
 
@@ -362,6 +374,7 @@ Route::group(['prefix' =>'customers'], function () {
         'uses' => 'CustomerController@update1',
         'as' => 'customers.update1'
     ]);
+
 });
 
 Route::group(['prefix' => 'homepage'], function () {
@@ -370,3 +383,38 @@ Route::group(['prefix' => 'homepage'], function () {
         'as' => 'homepage.index'
     ]);
 });
+
+
+
+//---------------------------------------------------------------------------------
+
+Route::group(['prefix' => 'client'], function (){
+    Route::get('', function () {
+        return view('client.index');
+    })->name('client.index');
+
+
+    Route::get('signup', function () {
+        return view('client.signup');
+    })->name('client.signup');
+
+//    Route::get('reg', function () {
+//        return view('client.reg');
+//    })->name('client.reg');
+
+    Route::get("details", "ClientController@details")
+        ->name('client.details');
+
+    Route::get('brand', function () {
+        return view('client.brand');
+    })->name('client.brand');
+
+//    Route::get('allpies', function () {
+//        return view('pie.allpies');
+//    })->name('pie.allpies');
+//
+//    Route::get('applepie', function () {
+//        return view('pie.applepie');
+//    })->name('pie.applepie');
+});
+

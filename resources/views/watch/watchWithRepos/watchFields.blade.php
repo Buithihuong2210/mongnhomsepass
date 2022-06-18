@@ -3,7 +3,7 @@
 <div class="form-group">
 {{--<fieldset disabled>--}}
   <label for="username" class="font-weight-bold">Username</label>
-  <input type="text" class="form-control" id="username" name="username" value="{{old('username')?? $admins->username}}">
+  <input type="text" class="form-control" id="username" name="username" value="{{old('username')?? $admins->username}}" readonly>
 {{--</fieldset>--}}
 </div>
 <div class="form-group"  >

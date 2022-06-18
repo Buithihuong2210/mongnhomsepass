@@ -1,4 +1,4 @@
-@extends('master.watchMaster')
+@extends('master.watchMasterAdmin')
 
 @section('main')
 

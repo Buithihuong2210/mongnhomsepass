@@ -1,4 +1,4 @@
-@extends('master.watchMaster')
+@extends('master.watchMasterAdmin')
 @section('main')
   <div class="container">
     <h1 class="display-4">Update An Existing Admin</h1>

@@ -12,6 +12,7 @@
         {{--        <th scope="col">#</th>--}}
         <th scope="col">Name</th>
         <th scope="col">Image</th>
+{{--        <th scope="col">Visible</th>--}}
         <th scope="col">&nbsp;</th>
         <th scope="col">&nbsp;</th>
         <th scope="col">&nbsp;</th>
@@ -24,10 +25,9 @@
 
           <td>{{$b->name}}</td>
 
+             <td><img src="{{ asset('/assets/img/brands/'.$b->image) }}"  style="max-width: 150px; max-height:150px"></td>
 
-
-             <td><img src="{{ asset('/storage/brands/'.$b->image) }}"  style="max-width: 150px; max-height:150px"></td>
-
+{{--          <td>{{$b->visible}}</td>--}}
 
           <td><a type="button" class="btn btn-info btn-sm"
                  href="{{route('brands.show', ['id' => $b->id])}}"

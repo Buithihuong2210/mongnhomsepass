@@ -70,8 +70,26 @@
                 <input class="input--style-4" type="text" name="address">
               </div>
             </div>
-            <div class="p-t-15">
-              <button class="btn btn--radius-2 btn--blue" type="submit">Sign up</button>
+
+{{--            <div class="p-t-15">--}}
+{{--              <button class="btn btn--radius-2 btn--blue" type="submit">Sign up</button>--}}
+{{--            </div>--}}
+
+{{--            <div class="p-t-15">--}}
+{{--              <button class="btn btn--radius-2 btn--red" type="button">Cancel</button>--}}
+{{--            </div>--}}
+
+            <div class="row row-space">
+              <div class="col-2">
+                <div class="input-group">
+                  <button class="btn btn--radius-2 btn--blue" type="submit">SIGN UP</button>
+                </div>
+              </div>
+              <div class="col-2">
+                <div class="input-group">
+                  <button class="btn btn--radius-2 btn--red" type="button" href="{{route('client.index')}}" >CANCEL</button>
+                </div>
+              </div>
             </div>
           </form>
         </div>

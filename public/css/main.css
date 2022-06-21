@@ -250,8 +250,8 @@ h6 {
    ========================================================================== */
 .btn {
   display: inline-block;
-  line-height: 50px;
-  padding: 0 50px;
+  line-height: 40px;
+  padding: 0 40px;
   -webkit-transition: all 0.4s ease;
   -o-transition: all 0.4s ease;
   -moz-transition: all 0.4s ease;
@@ -290,6 +290,12 @@ h6 {
 
 .btn--blue {
   background: #4272d7;
+    margin-left: 2rem;
+}
+.btn--red
+{
+    background: red;
+    margin-left: 1rem;
 }
 
 .btn--blue:hover {

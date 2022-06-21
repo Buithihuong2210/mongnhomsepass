@@ -15,6 +15,7 @@ class WatchRepos
         return DB::select($sql);
     }
 
+
     public static function getAllWatchsWithBrands() {
         $sql = 'select w.*, b.name as brandName ';
         $sql .= 'from watchs as w ';
@@ -29,6 +30,14 @@ class WatchRepos
         $sql = 'select w.* ';
         $sql .= 'from watchs as w ';
         $sql .= 'where w.id = ? ';
+
+        return DB::select($sql, [$id]);
+    }
+
+    public static function getWatchByBrandId($id) {
+        $sql = 'select w.* ';
+        $sql .= 'from watchs as w ';
+        $sql .= 'where w.brandsId = ?';
 
         return DB::select($sql, [$id]);
     }
@@ -63,4 +72,12 @@ class WatchRepos
 
         DB::delete($sql, [$id]);
     }
+
+    public static function showWatch(){
+    $sql = 'select w.* ';
+    $sql .= 'from watchs as w ';
+    $sql .= 'where visible = 0 ';
+    $sql .= 'order by w.id ';
+    return DB::select($sql);
+}
 }

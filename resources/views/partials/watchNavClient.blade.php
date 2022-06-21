@@ -8,19 +8,17 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
                 <li class="nav-item dropdown">
-                    <a role="button" class="nav-link dropdown-toggle" href="{{route('client.brand')}}" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-expanded="false">
+                    <a role="button" class="nav-link dropdown-toggle"
+{{--                       href="{{route('client.brand')}}"--}}
+                       id="navbarDropdownMenuLink" data-toggle="dropdown" aria-expanded="false">
                         Brands
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="#">Casio</a>
-                        <a class="dropdown-item" href="#">Certina</a>
-                        <a class="dropdown-item" href="#">DW</a>
-                        <a class="dropdown-item" href="#">Seiko</a>
-                        <a class="dropdown-item" href="#">SR</a>
-                        <a class="dropdown-item" href="#">Frederique</a>
-                        <a class="dropdown-item" href="#">Orient</a>
-                        <a class="dropdown-item" href="#">DW</a>
-                        <a class="dropdown-item" href="#">Calvin-Klein</a>
+                      @foreach($brands as $b)
+                      <a class="dropdown-item"
+{{--                         href="{{route('client.show')}}"--}}
+                      >{{$b->name}}</a>
+                      @endforeach
                     </div>
                 </li>
 
@@ -61,13 +59,13 @@
             </ul>
             <form class="form-inline">
                 <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" >
-                <button class="btn btn-outline-secondary my-2 my-sm-2" type="submit">Search</button>
+                <button class="btn btn-outline-secondary my-2 my-sm-2" type="submit">SEARCH</button>
             </form>
             <br>
 
             <div>
                 <a type="button" class="btn btn-secondary btn-sm my-2 my-sm-0" style="margin-left: 3rem; padding: 0.5rem"
-                   href="{{route('customers.create')}}">Sign up</a>
+                   href="{{route('customers.create')}}">SIGN UP</a>
             </div>
         </div>
     </div>

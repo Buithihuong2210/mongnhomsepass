@@ -4521,7 +4521,32 @@ input[type="button"].btn-block {
 .card > .list-group + .card-footer {
   border-top: 0;
 }
+/*.header__qr{*/
+/*    width: 270px;*/
+/*    z-index: 2;*/
+/*    position: absolute;*/
+/*    left: 0;*/
+/*    top: 120%;*/
+/*    padding: 8px;*/
+/*    border-radius: 2px;*/
+/*    display: none;*/
+/*    animation: FadeOn ease-in 0.85s;*/
+/*}*/
+/*.header__qr::before*/
+/*{*/
+/*    content: "";*/
+/*    display: block;*/
+/*    position: absolute;*/
+/*    width: 100%;*/
+/*    height: 20px;*/
+/*    left: 0;*/
+/*    top: -18px;*/
+/*}*/
 
+/*.header__qr-img{*/
+/*    width: 100%;*/
+/*    z-index: 10;*/
+/*}*/
 .card-body {
   flex: 1 1 auto;
   min-height: 1px;

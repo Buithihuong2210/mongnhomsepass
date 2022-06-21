@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Repository\BrandRepos;
+use App\Repository\WatchRepos;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -36,33 +37,35 @@ class BrandController extends Controller
             ["brands" => (object)[
                 'id' => '',
                 'name' => '',
-                'image' => ''
+                'image' => '',
+                'visible' => ''
             ]]);
     }
+
     public function store(Request $request)
     {
-        //     $this->formValidate($request)->validate(); //shortcut
-        if ($request->hasFile('file')) {
+        $this->formValidate($request)->validate(); //shortcut
 
-            $request->validate([
-                'image' => 'mimes:jpg,jpeg,bmp,png' // Only allow .jpg, .bmp and .png file types.
-            ]);
-
-            // Save the file locally in the storage/public/ folder under a new folder named /product
-
+        if ($request->has('file')) {
+            $image = $request->file->getClientoriginalName();
+            $request->file->move(public_path('assets/img/brands'), $image);
         }
-        $request->file->store('brands', 'public');
+        $request->merge(['image' => $image]);
+
         $brands = (object)[
             'id' => $request->input('id'),
             'name' => $request->input('name'),
-            "image" => $request->file->hashName(),
+            "image" => $request->input('image'),
+            'visible' => $request->input('visible')
+
         ];
         $newId = BrandRepos::insert($brands);
 
         return redirect()
             ->action('BrandController@brands')
-            ->with('msg', 'New brand with id: '.$newId.' has been inserted');
+            ->with('msg', 'New brand with id: ' . $newId . ' has been inserted');
     }
+
     public function edit($id)
     {
         $brands = BrandRepos::getBrandById($id); //this is always an array
@@ -111,18 +114,19 @@ class BrandController extends Controller
 
 //        dd($request-> all());
 
-        if ($request->hasFile('file')) {
-            $request->validate([
-                'image' => 'mimes:jpg,jpeg,bmp,png' // Only allow .jpg, .bmp and .png file types.
-            ]);
-            // Save the file locally in the storage/public/ folder under a new folder named /watchs
-        }
+        $this->formValidate($request)->validate(); //shortcut
 
-        $request->file->store('brands', 'public');
+        if ($request->has('file')) {
+            $image = $request->file->getClientoriginalName();
+            $request->file->move(public_path('assets/img/brands'), $image);
+        }
+        $request->merge(['image' => $image]);
+
         $brands = (object)[
             'id' => $request->input('id'),
             'name' => $request->input('name'),
-            "image" => $request->file->hashName(),
+            "image" => $request->input('image'),
+            'visible' => $request->input('visible')
         ];
         BrandRepos::update($brands);
 
@@ -131,7 +135,8 @@ class BrandController extends Controller
     }
 
 
-    public function confirm($id){
+    public function confirm($id)
+    {
         $brands = BrandRepos::getBrandById($id); //this is always an array
 
         return view('watch.brands.confirm',
@@ -148,29 +153,24 @@ class BrandController extends Controller
             return redirect()->action('BrandController@index');
         }
 
-//        if($request->){
-//                $request->validate([
-//                    function ($attribute, $brands, $watchs, $fail) {
-//                        $brands = $brands->id;
-//                        $watchs = $watchs->brandsId;
-//                        if ($brands == $watchs) {
-//                            $fail('Please delete related watches!!!');
-//                        }
-//                    }
-//                ]);
-//        }
 
-        BrandRepos::delete($id);
+        $watch = WatchRepos::getWatchByBrandId($id);
 
+        if (count($watch) > 0) {
+            return redirect()->action('BrandController@brands')
+                ->with('message', 'Can not delete!!! Please delete products related to brands !!');
+        } else {
+            BrandRepos::delete($id);
+            return redirect()->action('BrandController@brands')
+                ->with('msg', 'Delete Successfully');
+        }
 
-        return redirect()->action('BrandController@brands')
-            ->with('msg', 'Delete Successfully');
     }
 
     private function formValidate($request)
     {
         return Validator::make(
-            $request->all(),[
+            $request->all(), [
             ]
         );
     }

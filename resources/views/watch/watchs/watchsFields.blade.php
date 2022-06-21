@@ -7,6 +7,11 @@
 </div>
 
 <div class="form-group">
+  <label for="visible" class="font-weight-bold">Visible</label>
+  <input type="text" class="form-control" id="visible" name="visible" value="{{old('visible')?? $watchs->visible}}">
+</div>
+
+<div class="form-group">
   <label for="price" class="font-weight-bold">Price</label>
   <input type="number" class="form-control" id="price" name="price" value="{{old('price')?? $watchs->price}}">
 </div>

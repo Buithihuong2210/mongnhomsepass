@@ -11,6 +11,7 @@
       <tr>
         {{--                <th scope="col">#</th>--}}
         <th scope="col">Name</th>
+        <th scope="col">Brand</th>
         <th scope="col">Price($)</th>
         <th scope="col">Size</th>
         <th scope="col">Material</th>
@@ -29,12 +30,13 @@
         <tr>
           {{--          <th scope="col"> {{$a -> id}}</th>--}}
           <td>{{$w->name}}</td>
+          <td>{{$w->brandName}}</td>
           <td>{{$w->price}}</td>
           <td>{{$w->size}}</td>
           <td>{{$w->material}}</td>
           <td>{{$w->color}}</td>
           {{--          <td>{{$p->description}}</td>--}}
-          <td><img src="{{ asset('/storage/watchs/'.$w->image) }}"  style="max-width:150px; max-height:150px"></td>
+          <td><img src="{{ asset('/assets/img/watches/'.$w->image) }}"  style="max-width:150px; max-height:150px"></td>
           {{--          <td>{{$p->categoriesId}}</td>--}}
 
 
@@ -48,6 +50,7 @@
           </td>
           <td><a type="button" class="btn btn-danger btn-sm"
                  href="{{route('watchs.confirm', ['id' => $w->id])}}"
+
             >Delete</a>
           </td>
         </tr>

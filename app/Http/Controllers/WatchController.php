@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Repository\BrandRepos;
 use App\Repository\WatchRepos;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class WatchController extends Controller
 {
@@ -38,6 +39,7 @@ class WatchController extends Controller
             ["watchs" => (object)[
                 'id' => '',
                 'name' => '',
+                'visible' => '',
                 'price' => '',
                 'size' => 0,
                 'material'=>'',
@@ -54,23 +56,23 @@ class WatchController extends Controller
     public function store(Request $request)
     {
 //        dd($request-> all());
-        //$this->formValidate($request)->validate(); //shortcut
-        if ($request->hasFile('file'))
-        {
-            $request->validate([
-                'image' => 'mimes:jpg,jpeg,bmp,png' // Only allow .jpg, .bmp and .png file types.
-            ]);
-            // Save the file locally in the storage/public/ folder under a new folder named /watchs
+        $this->formValidate($request)->validate(); //shortcut
+
+        if($request->has('file')){
+            $image =  $request->file->getClientoriginalName();
+            $request->file->move(public_path('assets/img/watches'), $image);
         }
-        $request->file->store('watchs','public');
+        $request->merge(['image' => $image]);
+
         $watchs = (object)[
             'name' => $request->input('name'),
+            'visible' => $request->input('visible'),
             'price' => $request->input('price'),
             'size' => $request->input('size'),
             'material' => $request->input('material'),
             'color' => $request->input('color'),
             'description' => $request->input('description'),
-            "image" => $request->file->hashName(),
+            "image" => $request->input('image'),
             'brandsId' => $request->input('brands'),
 
         ];
@@ -102,23 +104,25 @@ class WatchController extends Controller
 
 //        dd($request-> all());
 
-        if ($request->hasFile('file')) {
-            $request->validate([
-                'image' => 'mimes:jpg,jpeg,bmp,png' // Only allow .jpg, .bmp and .png file types.
-            ]);
-            // Save the file locally in the storage/public/ folder under a new folder named /watchs
-        }
+        $this->formValidate($request)->validate(); //shortcut
 
-        $request->file->store('watchs', 'public');
+        if($request->has('file')){
+            $image =  $request->file->getClientoriginalName();
+            $request->file->move(public_path('assets/img/watches'), $image);
+        }
+        $request->merge(['image' => $image]);
+
+//        $request->file->store('watchs', 'public');
         $watchs = (object)[
             'id' => $request->input('id'),
             'name' => $request->input('name'),
+            'visible' => $request->input('visible'),
             'price' => $request->input('price'),
             'size' => $request->input('size'),
             'material' => $request->input('material'),
             'color' => $request->input('color'),
             'description' => $request->input('description'),
-            "image" => $request->file->hashName(),
+            'image' => $request->input('image'),
             'brandsId' => $request->input('brands'),
         ];
         WatchRepos::update($watchs);
@@ -159,10 +163,10 @@ class WatchController extends Controller
     {
         return Validator::make(
             $request->all(),
-//            [
-//                'name' => ['required'],
-//                'size' =>['required']
-//            ]
+            [
+                'name' => ['required'],
+                'size' =>['required']
+            ]
         );
     }
 

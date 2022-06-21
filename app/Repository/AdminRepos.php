@@ -30,5 +30,11 @@ class AdminRepos
         DB::update($sql, [$admins->username, $admins->fullname, $admins->email, $admins->phone, $admins->id]);
 
     }
+    public static function password()
+    {
+        $sql = 'select a.password as apassword ';
+        $sql .= 'from admins as a ';
+        $sql .= 'where  ';
+    }
 
 }

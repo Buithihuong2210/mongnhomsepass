@@ -7,6 +7,11 @@
 </div>
 
 <div class="form-group">
+  <label for="visible" class="font-weight-bold">Visible</label>
+  <input type="text" class="form-control" id="visible" name="visible" value="{{old('visible')?? $watchs->visible}}">
+</div>
+
+<div class="form-group">
   <label for="price" class="font-weight-bold">Price($)</label>
   <input type="text" class="form-control" id="price" name="price" value="{{old('price')?? $watchs->price}}">
 </div>
@@ -34,7 +39,7 @@
 
 <div class="form-group">
   <label for="image_pro" class="font-weight-bold"> Image</label>
-  <dd class="col-sm-9"><img src="{{ asset('/storage/watchs/'.$watchs->image) }}"  style='max-width:250px; max-height:250px'></dd>
+  <dd class="col-sm-9"><img src="{{ asset('/assets/img/watches/'.$watchs->image) }}"  style='max-width:250px; max-height:250px'></dd>
   <input type="file" name="file" id="file" value="{{old('image')?? $watchs->image}}">
 </div>
 

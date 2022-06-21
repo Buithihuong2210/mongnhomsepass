@@ -5,6 +5,9 @@
   <dt class="col-sm-3">Name</dt>
   <dd class="col-sm-9">{{ $watchs->name }}</dd>
 
+  <dt class="col-sm-3">Visible</dt>
+  <dd class="col-sm-9">{{ $watchs->visible }}</dd>
+
   <dt class="col-sm-3">Price($)</dt>
   <dd class="col-sm-9">{{ $watchs->price }}</dd>
 
@@ -22,7 +25,7 @@
 
   <dt class="col-sm-3">Image</dt>
   <dd class="col-sm-9">
-    <img src="{{ asset('/storage/watchs/'.$watchs->image) }}"  style='max-width:250px; max-height:250px'></dd>
+    <img src="{{ asset('/assets/img/watches/'.$watchs->image) }}"  style='max-width:250px; max-height:250px'></dd>
 
     <dt class="col-sm-3">Brand</dt>
     <dd class="col-sm-9">{{$brands->name}}</dd>

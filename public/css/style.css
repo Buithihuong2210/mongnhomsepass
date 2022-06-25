@@ -16,7 +16,8 @@
     top:50%;
     left:50%;
     color:#fff;
-    box-shadow:3px 3px 4px rgba(0,0,0,0.2);
+    /*box-shadow:3px 3px 4px rgba(0,0,0,0.2);*/
+    background: linear-gradient( rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7) )
 }
 
 .login-dark .illustration {

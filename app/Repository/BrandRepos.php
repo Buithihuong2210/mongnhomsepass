@@ -82,8 +82,8 @@ class BrandRepos
             $sql = 'select w.* ';
             $sql .= 'from watchs as w ';
             $sql .= 'join brands as b on w.brandsId = b.id ';
-            $sql .= 'where w.brandsId = b.id and visible = 0';
-            return DB::select($sql);
+            $sql .= 'where w.brandsId = ?';
+            return DB::select($sql, [$id]);
         }
 
 

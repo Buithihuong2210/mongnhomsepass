@@ -18,8 +18,10 @@
 
       <form action="{{route('auth.signin')}}" method="post">
         @csrf
+
         <h2 class="sr-only">Login Form</h2>
         <h3 class="display-4">Login</h3>
+        @include('watch.brands.sessionmessage')
         <div class="illustration"><i class="icon ion-ios-locked-outline"></i></div>
         <div class="form-group"><input class="form-control" type="text" name="username" placeholder="Username"></div>
         <div class="form-group"><input class="form-control" type="password" name="password" placeholder="Password"></div>

@@ -304,7 +304,7 @@ Route::group(['prefix' =>'watchs', 'middleware' => ['manual.auth']], function ()
 
     Route::get('show/{id}', "WatchController@show")
         ->name('watchs.show');
-////
+
 //
     Route::get('create', "WatchController@create")
         ->name('watchs.create');
@@ -352,9 +352,6 @@ Route::group(['prefix' =>'customers', 'middleware' => ['manual.auth']], function
         'uses' => 'CustomerController@store',
         'as' => 'customers.store'
     ]);
-
-
-
     Route::get('update/{id}',[
         'uses' => 'CustomerController@edit',
         'as' => 'customers.edit'
@@ -392,18 +389,24 @@ Route::group(['prefix' => 'client'], function (){
     Route::get('',"ClientController@index")
         ->name('client.index');
 
-    Route::get("details", "ClientController@details")
+    Route::post('search',"ClientController@search")
+        ->name('client.search');
+
+    Route::get('details/{id}', "ClientController@details")
         ->name('client.details');
 
-    Route::get('brand', function () {
-        return view('client.brand');
-    })->name('client.brand');
+    Route::get('search/',[
+        'uses' => 'ClientController@search',
+        'as' => 'client.search'
+    ]);
 
     Route::get('show/{id}',[
         'uses' => 'ClientController@show',
         'as' => 'client.show'
     ]);
 
+    Route::get('hello', 'ClientController@erorr')
+        ->name('client.hello');
 });
 
 Route::group(['prefix' => 'auth'], function (){

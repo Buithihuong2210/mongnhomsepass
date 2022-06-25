@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
     <div class="container">
-        <a class="navbar-brand" href="#logo"><img src="{{asset('assets/img/navbar-logo2.png')}}" alt="" /></a>
+        <a class="navbar-brand" href="{{route('client.index')}}"><img src="{{asset('assets/img/navbar-logo2.png')}}" alt="" /></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             Menu
             <i class="fas fa-bars ms-1"></i>
@@ -16,20 +16,19 @@
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                       @foreach($brands as $b)
                       <a class="dropdown-item"
-{{--                         href="{{route('client.show')}}"--}}
+                         href="{{route('client.show', ['id' => $b->id])}}"
                       >{{$b->name}}</a>
                       @endforeach
                     </div>
                 </li>
-
 
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-expanded="false">
                         Mens
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="#">New Arrivals</a>
-                        <a class="dropdown-item" href="#">Best Sellers</a>
+                        <a class="dropdown-item" href="{{route('client.hello')}}">New Arrivals</a>
+                        <a class="dropdown-item" href="{{route('client.hello')}}">Best Sellers</a>
                         <a class="dropdown-item" href="#">Watches</a>
                     </div>
                 </li>
@@ -39,8 +38,8 @@
                         Womens
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">New Arrivals</a>
-                        <a class="dropdown-item" href="#">Best Sellers</a>
+                        <a class="dropdown-item" href="{{route('client.hello')}}">New Arrivals</a>
+                        <a class="dropdown-item" href="{{route('client.hello')}}">Best Sellers</a>
                         <a class="dropdown-item" href="#">Watches</a>
                     </div>
                 </li>
@@ -49,17 +48,18 @@
                         Children
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">New Arrivals</a>
-                        <a class="dropdown-item" href="#">Best Sellers</a>
+                        <a class="dropdown-item" href="{{route('client.hello')}}">New Arrivals</a>
+                        <a class="dropdown-item" href="{{route('client.hello')}}">Best Sellers</a>
 {{--                        <div class="dropdown-divider"></div>--}}
                         <a class="dropdown-item" href="#">Watches</a>
                     </div>
                 </li>
 
             </ul>
-            <form class="form-inline">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" >
-                <button class="btn btn-outline-secondary my-2 my-sm-2" type="submit">SEARCH</button>
+            <form class="form-inline" action="{{route('client.search')}}" method="get">
+              @csrf
+                <input class="form-control mr-sm-2" type="search" name="query" placeholder="Search" aria-label="Search" >
+                <button class="btn btn-outline-secondary my-2 my-sm-2" type="submit"><i class="bi bi-search"></i></button>
             </form>
             <br>
 
@@ -70,10 +70,3 @@
         </div>
     </div>
 </nav>
-<header class="masthead">
-    <div class="container">
-        <div class="masthead-subheading">Welcome To Everyone!</div>
-        <div class="masthead-heading text-uppercase">It's Nice To Meet You</div>
-        <a class="btn btn-primary btn-xl text-uppercase" href="#services">Tell Us More</a>
-    </div>
-</header>

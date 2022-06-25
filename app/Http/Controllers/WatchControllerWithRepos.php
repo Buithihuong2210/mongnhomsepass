@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Repository\AdminRepos;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
 class WatchControllerWithRepos extends Controller
@@ -48,27 +49,28 @@ class WatchControllerWithRepos extends Controller
         $admins = (object)[
             'id' => $request->input('id'),
             'username' => $request->input('username'),
-//            'password' => $request::make($request-> newPassword),
-        'password'=> $request->input('password'),
+//         'password' => $request::make($request-> newPassword),
+//        'password'=> $request->input('password'),
+            'password' => Hash::make(sha1($request->input('password'))),
             'fullname' => $request->input('fullname'),
             'email' => $request->input('email'),
             'phone' => $request ->input('phone')
         ];
-        $admins = AdminRepos::password();
+//        $admins = AdminRepos::password();
 //        $password = $admins->input('password');
 
 
-        if($admins = $request->input('password') )
-        {
+//        if($admins = $request->input('password') )
+//        {
             AdminRepos::update($admins);
 
             return redirect()->action('WatchControllerWithRepos@admins')
                 ->with('msg', 'Update Successfully');
-        }else
-        {
-            return redirect()->action('WatchControllerWithRepos@edit')
-                ->with('msg', 'Error !!');
-        }
+//        }else
+//        {
+//            return redirect()->action('WatchControllerWithRepos@edit')
+//                ->with('msg', 'Error !!');
+//        }
 
     }
     private function formValidate($request)

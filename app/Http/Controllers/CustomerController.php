@@ -57,9 +57,9 @@ class CustomerController extends Controller
         ];
         $newId = CustomerRepos::insert($customers);
 
-        return redirect()->route('client.index');
+        return redirect()->route('client.index')
 //            ->action('CustomerController@customers')
-//            ->with('msg', 'New customer with id: '.$newId.' has been inserted');
+            ->with('msg', 'New customer with id: '.$newId.' has been sign up');
     }
 
     public function edit($id)

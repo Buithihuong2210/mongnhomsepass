@@ -46,7 +46,7 @@ class CustomerController extends Controller
     public function store(Request $request)
     {
 //        dd($request->all());
-        $this->formValidate1($request)->validate();  //shortcut
+        $this->formValidate($request)->validate();  //shortcut
         $customers = (object)[
             'fullname' => $request->input('fullname'),
             'dob' => $request->input('dob'),
@@ -76,7 +76,7 @@ class CustomerController extends Controller
             return redirect()->action('CustomerController@customers');
         }
 
-        $this->formValidate1($request)->validate();
+        $this->formValidate($request)->validate();
 
         $customers = (object)[
             'id' => $request->input('id'),
@@ -92,16 +92,26 @@ class CustomerController extends Controller
         return redirect()->action('CustomerController@customers')
             ->with('msg', 'Update Successfully');
     }
-    private function formValidate1($request)
+    private function formValidate($request)
     {
         return Validator::make(
             $request->all(),
             [
-                'fullname' =>['required'],
+                'fullname' =>['required', 'min:5' ],
                 'email' =>['required', 'e-mail'],
                 'dob'=>['required', 'after: 1902/01/01'],
-                'phone'=>['required', 'starts_with:0'],
-//                'gender'=>['required', 'starts_with:"M", "F", "T"']
+                'phone'=>['required','starts_with:0','digits:10'],
+//                'gender'=>['required']
+            ],
+            [
+                'fullname.required'=>'Please enter Full name',
+                'fullname.min'=>'Enter Full Name up to 5 characters',
+//                'gender.required'=>'Please enter Gender',
+                'phone.required'=>'Please enter Phone',
+                'phone.starts_with'=>'Enter a phone number starting with 0',
+                'phone.digits'=>'Please enter exactly 10 numbers',
+                'email.required'=>'Please enter Email',
+                'email.email'=>'Please enter email Form',
             ]
         );
     }

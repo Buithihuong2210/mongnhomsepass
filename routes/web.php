@@ -343,15 +343,15 @@ Route::group(['prefix' =>'customers', 'middleware' => ['manual.auth']], function
         ->name('customers.show');
 //
 
-    Route::get('create', [
-        'uses' => 'CustomerController@create',
-        'as' => 'customers.create'
-    ]);
-
-    Route::post('create',[
-        'uses' => 'CustomerController@store',
-        'as' => 'customers.store'
-    ]);
+//    Route::get('create', [
+//        'uses' => 'CustomerController@create',
+//        'as' => 'customers.create'
+//    ]);
+//
+//    Route::post('create',[
+//        'uses' => 'CustomerController@store',
+//        'as' => 'customers.store'
+//    ]);
     Route::get('update/{id}',[
         'uses' => 'CustomerController@edit',
         'as' => 'customers.edit'
@@ -386,6 +386,17 @@ Route::group(['prefix' => 'homepage'], function () {
 //---------------------------------------------------------------------------------
 
 Route::group(['prefix' => 'client'], function (){
+
+    Route::get('signUp', [
+        'uses' => 'CustomerController@create',
+        'as' => 'customers.create'
+    ]);
+
+    Route::post('signUp',[
+        'uses' => 'CustomerController@store',
+        'as' => 'customers.store'
+    ]);
+
     Route::get('',"ClientController@index")
         ->name('client.index');
 

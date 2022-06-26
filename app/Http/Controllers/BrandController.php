@@ -170,7 +170,13 @@ class BrandController extends Controller
     private function formValidate($request)
     {
         return Validator::make(
-            $request->all(), [
+            $request->all(),
+            [
+                [
+                    'name' => ['required'],
+//                    'image'=>['required']
+                ],
+                'name.required'=>'Please enter Full name',
             ]
         );
     }

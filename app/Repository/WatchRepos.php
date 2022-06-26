@@ -17,7 +17,7 @@ class WatchRepos
 
 
     public static function getAllWatchsWithBrands() {
-        $sql = 'select w.* ';
+        $sql = 'select w.*, b.name as brandName ';
         $sql .= 'from watchs as w ';
         $sql .= 'join brands as b on w.brandsId = b.id ';
         $sql .= 'where w.brandsId = b.id ';

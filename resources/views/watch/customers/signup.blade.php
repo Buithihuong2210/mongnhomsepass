@@ -12,36 +12,30 @@
               <div class="col-2">
                 <div class="input-group">
                   <label class="label">Full Name</label>
-                  <input class="input--style-4" type="text" name="fullname">
+                  <input class="input--style-4" type="text" name="fullname" value="{{old('fullname')?? $customers->fullname}}">
                 </div>
               </div>
             </div>
             <div class="row row-space">
               <div class="col-2">
                 <div class="input-group">
-                  <label class="label">Date of Birth</label>
+                  <label class="label" >Date of Birth</label>
                   <div class="input-group-icon">
-                    <input class="input--style-4 js-datepicker" type="date" name="dob">
+                    <input class="input--style-4 js-datepicker"  type="date" name="dob" value="{{old('dob')?? $customers->dob}}">
                     <i class="zmdi zmdi-calendar-note input-icon js-btn-calendar"></i>
                   </div>
                 </div>
               </div>
-              <div class="col-3">
+              <div class="col-2">
                 <div class="input-group">
-                  <label class="label">Gender</label>
+                  <label for="gender" class="label">Gender</label>
                   <div class="p-t-9">
-                    <label class="radio-container">Male
-                      <input type="radio" id="male" checked="checked" name="male">
-                      <span class="checkmark"></span>
-                    </label>
-                    <label class="radio-container">Female
-                      <input type="radio" id="female" name="gender">
-                      <span class="checkmark"></span>
-                    </label>
-                    <label class="radio-container">Other
-                      <input type="radio" id="other" name="gender">
-                      <span class="checkmark"></span>
-                    </label>
+                    <select name="gender" id="gender" class="radio-container" style="height: 3.5rem ">
+                      <option value="choose"selected="selected" style="text-align: center"> -- Choice -- </option>
+                      <option value="Male">Male</option>
+                      <option value="Female">Female</option>
+                      <option value="Other">Other</option>
+                    </select>
                   </div>
                 </div>
               </div>
@@ -50,20 +44,20 @@
               <div class="col-2">
                 <div class="input-group">
                   <label class="label">Email</label>
-                  <input class="input--style-4" type="email" name="email">
+                  <input class="input--style-4" type="email" name="email" value="{{old('email')?? $customers->email}}">
                 </div>
               </div>
               <div class="col-2">
                 <div class="input-group">
                   <label class="label">Phone</label>
-                  <input class="input--style-4" type="text" name="phone">
+                  <input class="input--style-4" type="text" name="phone" value="{{old('phone')?? $customers->phone}}">
                 </div>
               </div>
             </div>
             <div class="input-group">
               <label class="label">Address</label>
               <div>
-                <input class="input--style-4" type="text" name="address">
+                <input class="input--style-4" type="text" name="address" value="{{old('address')?? $customers->address}}">
               </div>
             </div>
             <div class="row row-space">

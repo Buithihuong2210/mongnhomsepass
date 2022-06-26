@@ -164,8 +164,17 @@ class WatchController extends Controller
         return Validator::make(
             $request->all(),
             [
-                'name' => ['required'],
-                'size' =>['required']
+                'name' => ['required','min:8'],
+                'size' =>['required','digits:3,8','numeric'],
+                'price'=>['required', 'numeric'],
+                'material'=>['required','alpha'],
+                'color' =>['required' ,'min:3'],
+                'image' =>['required'],
+                'description'=>['required']
+            ],
+            [
+                'name.required'=>'Please enter Name Watch',
+
             ]
         );
     }

@@ -8,7 +8,7 @@
 
 <div class="form-group">
   <label for="dob" class="font-weight-bold">Date of Birth</label>
-  <input type="text" class="form-control" id="dob" name="dob" value="{{old('dob')?? $customers->dob}}">
+  <input type="date" class="form-control" id="dob" name="dob" value="{{old('dob')?? $customers->dob}}">
 </div>
 <div class="form-group">
   <label for="address" class="font-weight-bold">Address</label>

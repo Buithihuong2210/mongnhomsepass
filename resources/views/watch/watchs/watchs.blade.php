@@ -31,7 +31,7 @@
           {{--          <th scope="col"> {{$a -> id}}</th>--}}
           <td>{{$w->name}}</td>
           <td>{{$w->brandName}}</td>
-          <td>{{$w->price}}</td>
+          <td>{{$w->price}} $</td>
           <td>{{$w->size}}</td>
           <td>{{$w->material}}</td>
           <td>{{$w->color}}</td>

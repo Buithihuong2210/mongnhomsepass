@@ -9,6 +9,6 @@
       @include('watch.customers.customerFields')
       <button type="submit" class="btn btn-dark">Submit</button>
     </form>
-    <a type="button" href="{{route('customers.customers')}}" class="btn btn-info">&lt;&lt;&nbsp;Index</a>
+{{--    <a type="button" href="{{route('customers.customers')}}" class="btn btn-info">&lt;&lt;&nbsp;Index</a>--}}
   </div>
 @endsection

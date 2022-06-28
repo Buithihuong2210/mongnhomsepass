@@ -13,7 +13,7 @@
              id="navbarDropdownMenuLink" data-toggle="dropdown" aria-expanded="false">
             Brands
           </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" style="font-size: 1.75rem">
             @foreach($brands as $b)
               <a class="dropdown-item"
                  href="{{route('client.show', ['id' => $b->id])}}"
@@ -26,10 +26,10 @@
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-expanded="false">
             Mens
           </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" style="font-size: 1.75rem">
             <a class="dropdown-item" href="{{route('client.hello')}}">New Arrivals</a>
             <a class="dropdown-item" href="{{route('client.hello')}}">Best Sellers</a>
-            <a class="dropdown-item" href="#">Watches</a>
+            <a class="dropdown-item" href="{{route('client.index')}}">Watches</a>
           </div>
         </li>
 
@@ -37,21 +37,20 @@
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
             Womens
           </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="font-size: 1.75rem">
             <a class="dropdown-item" href="{{route('client.hello')}}">New Arrivals</a>
             <a class="dropdown-item" href="{{route('client.hello')}}">Best Sellers</a>
-            <a class="dropdown-item" href="{{route('client.hello')}}">Watches</a>
+            <a class="dropdown-item" href="{{route('client.index')}}">Watches</a>
           </div>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
             Children
           </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="font-size: 1.75rem" >
             <a class="dropdown-item" href="{{route('client.hello')}}">New Arrivals</a>
             <a class="dropdown-item" href="{{route('client.hello')}}">Best Sellers</a>
-            {{--                        <div class="dropdown-divider"></div>--}}
-            <a class="dropdown-item" href="{{route('client.hello')}}">Watches</a>
+            <a class="dropdown-item" href="{{route('client.index')}}">Watches</a>
           </div>
         </li>
 

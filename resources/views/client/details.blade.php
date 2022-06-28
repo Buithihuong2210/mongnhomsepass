@@ -23,27 +23,58 @@
 {{--            </ul>--}}
 
           </div>
-          <div class="details col-md-6">
-            <h3 class="product-title">{{$w->name}}</h3>
-            <h4 class="product-description">Description: <span style="text-transform: none;"> {{$w->description}}</span> </h4>
+          <div class="details col-md-6" >
+            <h1 class="product-title" style=" text-align: center; color: black  " >{{$w->name}}</h1>
+            <h1 class="price" style=" text-align: center; color: #dda20a"> <span>{{number_format($w->price).' '.'$'}}</span></h1>
+            <hr>
+
+            <h4 class="product-descriptions" style="font-size: 1.5rem">Description: <span style="text-transform: none;"> {{$w->description}}</span> </h4>
+            <hr>
+            <br>
             <h4 class="product-description">Material: <span style="text-transform: none;"> {{$w->material}}</span> </h4>
-            <h4 class="price">Price: <span>{{number_format($w->price).' '.'$'}}</span></h4>
-            <h5 class="sizes">sizes:
-              <span class="size" data-toggle="tooltip" title="small">26</span>
+            <br>
+
+            <h4 class="sizes">Sizes:<span> {{$w->size}}</span>
+{{--              <span class="size" data-toggle="tooltip" title="small">26</span>--}}
 {{--              <span class="size" data-toggle="tooltip" title="medium">27</span>--}}
 {{--              <span class="size" data-toggle="tooltip" title="large">28</span>--}}
 {{--              <span class="size" data-toggle="tooltip" title="xtra large">29</span>--}}
 {{--              <span class="size" data-toggle="tooltip" title="xtra large">30</span>--}}
-            </h5>
-            <h5 class="colors">Color:<span> {{$w->size}}</span>
-{{--              <span class="color orange not-available" data-toggle="tooltip" title="Not In store"></span>--}}
-{{--              <span class="color green"></span>--}}
-{{--              <span class="color blue"></span>--}}
-            </h5>
+            </h4>
+            <br>
+            <h4 class="colors" >Color: <span> {{$w->color}}</span>
 
-            <div class="action">
-              <button class="add-to-cart btn btn-default" type="button">add to cart</button>
-              <button class="like btn btn-default" type="button"><span class="fa fa-heart"></span></button>
+            </h4>
+            <div class="sizes">
+              <h4>QUANTITY</h4>
+              <input type="number" class="form- control text-center w-100" value="1" style="height: 2.75rem; font-size: 15px">
+            </div>
+            <hr>
+            <div class="col-lg-12">
+              <p class ="tag-section" style="font-size: 18px; color: black; margin-right: 6px;">
+                <strong> Tag: </strong>
+                <a href> Woman</a>
+                <a href>, Man</a>
+                <a href>, Children</a>
+              </p>
+            </div>
+            <br>
+            <div class="rating">
+              <div class="stars"  style="font-size: large">
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star"></span>
+                <span class="fa fa-star"></span>
+              </div>
+              <br>
+              <p class="vote" style="font-size: 1.75rem"><strong>91%</strong> of buyers enjoyed this product! <strong>(87 votes)</strong></p>
+              <span class="review-no"  style="font-size: large">41 reviews</span>
+            </div>
+
+            <div class="action" style=" text-align: center">
+              <button class="add-to-cart btn btn-default" type="button" style="font-size: large; font-weight: 700; color: #dda20a">Add to product favorites</button>
+              <button class="like btn btn-default" type="button"><span class="fa fa-heart" style="font-size: large; color:red;"></span></button>
             </div>
           </div>
         </div>

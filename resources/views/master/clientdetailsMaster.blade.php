@@ -7,11 +7,12 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Details Watch</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
+  <link rel="icon" type="image/x-icon" href="{{asset('assets/favicon.png')}}"/>
   <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
         integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
         crossorigin="anonymous">
-  <link rel="icon" type="image/x-icon" href="{{asset('assets/favicon.jpg')}}"/>
+
   <!-- Font Awesome icons (free version)-->
   <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
   <!-- Google fonts-->

@@ -26,7 +26,14 @@
 
 <div class="form-group">
   <label for="gender" class="font-weight-bold">Gender</label>
-  <input type="text" class="form-control" id="gender" name="gender" value="{{old('gender')?? $customers->gender}}">
+  <div class="p-t-9">
+    <select name="gender" id="gender" class="radio-container" style="height: 2rem " value="{{old('dob')?? $customers->gender}}">
+      <option value="choose"selected="selected" style="text-align: center"> -- Choice -- </option>
+      <option value="Male">Male</option>
+      <option value="Female">Female</option>
+      <option value="Other">Other</option>
+    </select>
+  </div>
 </div>
 
 

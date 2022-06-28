@@ -30,7 +30,7 @@
                 <div class="input-group">
                   <label for="gender" class="label">Gender</label>
                   <div class="p-t-9">
-                    <select name="gender" id="gender" class="radio-container" style="height: 3.5rem ">
+                    <select name="gender" id="gender" class="radio-container" style="height: 3.5rem " value="{{old('dob')?? $customers->gender}}">
                       <option value="choose"selected="selected" style="text-align: center"> -- Choice -- </option>
                       <option value="Male">Male</option>
                       <option value="Female">Female</option>
@@ -68,7 +68,7 @@
               </div>
               <div class="col-2">
                 <div class="input-group">
-                  <a class="btn btn--radius-2 btn--red" type="button" href="{{route('client.index')}}"> <i class="bi bi-x-square"></i>  CANCEL   </a>
+                  <a class="btn btn--radius-2 btn--red" type="button" href="{{route('client.index')}}"> <i class="bi bi-x-square"></i>CANCEL</a>
                 </div>
               </div>
             </div>

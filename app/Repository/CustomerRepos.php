@@ -27,7 +27,8 @@ class CustomerRepos
         $sql .= '(fullname, dob, address, phone, email, gender) ';
         $sql .= 'values (?, ?, ?, ?, ?, ?) ';
 
-        $result =  DB::insert($sql, [$customers->fullname, $customers->dob, $customers->address, $customers->phone, $customers->email, $customers->gender]);
+        $result =  DB::insert($sql, [$customers->fullname, $customers->dob, $customers->address, $customers->phone,
+            $customers->email, $customers->gender]);
         if($result){
             return DB::getPdo()->lastInsertId();
         } else {

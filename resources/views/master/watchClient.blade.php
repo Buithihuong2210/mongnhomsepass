@@ -45,8 +45,20 @@
 </div>
 
 <div id='chat-box'>
-  <div id='chat-top'>What do you Need HELP? <span id='chat-top-right'><svg id='close-box' xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48"><path d="M38 12.83L35.17 10 24 21.17 12.83 10 10 12.83 21.17 24 10 35.17 12.83 38 24 26.83 35.17 38 38 35.17 26.83 24z" fill='#fff'/></svg></span><div class='clear'></div></div>
-  <div id='chat-msg'><p>We Are expert in Web Design and Technical SEO</p>
+  <div id='chat-top'>Chat with cheap genuine Aura-Watch <i class="bi bi-watch"></i><span id='chat-top-right'><svg id='close-box' xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48"><path d="M38 12.83L35.17 10 24 21.17 12.83 10 10 12.83 21.17 24 10 35.17 12.83 38 24 26.83 35.17 38 38 35.17 26.83 24z" fill='#fff'/></svg></span><div class='clear'></div></div>
+  <div id='chat-msg'><p style="font-weight: bold">Hello ! Please leave a message, the Aura Watch will help you ! <i class="bi bi-person-heart"></i><!doctype html>
+      <html lang="en">
+      <head>
+        <meta charset="UTF-8">
+        <meta name="viewport"
+              content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+      </head>
+      <body>
+
+      </body>
+      </html></p>
     <div id='chat-form'>
       <div class='chat-in'>
         <input type='text' id='whats-in' Placeholder='Send Your Message...'/></div><div id='send-btn'>
@@ -62,13 +74,13 @@
 <style>
   body{width:100%}
   *{margin:0px;padding:0px;box-sizing:border-box;}
-  #whats-chat{position:fixed;right:3%;bottom:10%;height:auto;width:auto;background:dodgerblue;padding:12.5px;border-radius:50px;}
+  #whats-chat{position:fixed;right:3%;bottom:10%;height:auto;width:auto;background:#818183;padding:12.5px;border-radius:50px;}
   #whats-chat:hover{cursor:pointer;box-shadow:2px 2px 15px #ccc;bottom:11%;}
   /*===============================*/
   #chat-box{position:fixed;right:-500px;bottom:18%;width:250px;height:200px;transition:all .5s;}
-  #chat-top{width:100%;line-height:2;background:rgb(18, 140, 126);color:white;text-align:center;border-radius:5px 5px 0 0;padding:0 10px;}
+  #chat-top{width:100%;line-height:2;background:darkgray;color:white;text-align:center;border-radius:5px 5px 0 0;padding:0 10px;}
   #chat-msg{background:#ece5dd;padding:10px;border-radius:0 0 5px 5px;box-shadow:0 0 25px -10px #999;}
-  #chat-msg p{font-size:14px;padding:5px;background:white;border-radius:0 50px 50px 50px;margin-bottom:10px;}
+  #chat-msg p{font-size:12px;padding:5px;background:white;border-radius:0 50px 50px 50px;margin-bottom: 135px;}
   #chat-form{display:flex;}
   .chat-in{width:80%;}
   #chat-form input{border-radius:5px 0 5px 5px;border:none;outline:none;font-size:14px;padding:5px;line-height:2;}
@@ -110,7 +122,7 @@
   function sendmsg(){
     var msg = document.getElementById('whats-in').value;
     var relmsg = msg.replace(/ /g,"%20");
-    window.open('https://api.whatsapp.com/send?phone=99999999999&text='+relmsg,'_blank');
+    window.open('https://www.facebook.com/Aura-Watch-112254041526996'+relmsg,'_blank');
 
   }
 </script>
@@ -121,7 +133,7 @@
             <div class="col-lg-4 text-lg-start">Copyright &copy; Your Website 2022</div>
             <div class="col-lg-4 my-3 my-lg-0">
                 <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                <a class="btn btn-dark btn-social mx-2" href="https://www.facebook.com/profile.php?id=100057202157173" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a class="btn btn-dark btn-social mx-2" href="https://www.facebook.com/Aura-Watch-112254041526996" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
                 <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
             </div>
             <div class="col-lg-4 text-lg-end">

@@ -20,10 +20,10 @@ class CustomerController extends Controller
     public function show($id)
     {
 
-        $customers = CustomerRepos::getCustomerById($id); //this is always an array of objects
+        $customers = CustomerRepos::getCustomerById($id);
         return view('watch.customers.show',
             [
-                'customers' => $customers[0] //get the first element
+                'customers' => $customers[0]
             ]
         );
     }
@@ -58,7 +58,6 @@ class CustomerController extends Controller
         $newId = CustomerRepos::insert($customers);
 
         return redirect()->route('client.index')
-//            ->action('CustomerController@customers')
             ->with('msg', 'New customer with id: '.$newId.' has been sign up');
     }
 
@@ -97,21 +96,23 @@ class CustomerController extends Controller
         return Validator::make(
             $request->all(),
             [
-                'fullname' =>['required', 'min:5' ],
-                'email' =>['required', 'e-mail'],
+                'fullname' =>['required', 'min:5', 'regex:/^[a-zA-Z]+(?:\s[a-zA-Z]+)+$/'
+                ],
+                'email' =>['required', 'e-mail','distinct'],
                 'dob'=>['required', 'after: 1902/01/01'],
-                'phone'=>['required','starts_with:0','digits:10'],
-//                'gender'=>['required']
+                'phone'=>['required','starts_with:0','digits:10','numeric'],
+                'gender'=>['required']
             ],
             [
                 'fullname.required'=>'Please enter Full name',
                 'fullname.min'=>'Enter Full Name up to 5 characters',
-//                'gender.required'=>'Please enter Gender',
+                'gender.required'=>'Please enter Gender',
                 'phone.required'=>'Please enter Phone',
                 'phone.starts_with'=>'Enter a phone number starting with 0',
                 'phone.digits'=>'Please enter exactly 10 numbers',
                 'email.required'=>'Please enter Email',
                 'email.email'=>'Please enter email Form',
+                'email.distinct'=>'This email already exists, please enter another email',
             ]
         );
     }

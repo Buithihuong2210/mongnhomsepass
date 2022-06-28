@@ -79,10 +79,11 @@ class WatchControllerWithRepos extends Controller
             $request->all(),
             [
 
-                'password' =>['required'],
-                'fullname' =>['required'],
+                'password' =>['required', 'min:8'],
+                'fullname' =>['required','regex:/^[a-zA-Z]+(?:\s[a-zA-Z]+)+$/'
+                ],
                 'email' =>['required', 'e-mail'],
-                'phone'=>['required', 'starts_with:0']
+                'phone'=>['required', 'starts_with:0','digits:10','numeric' ]
             ]
         );
     }

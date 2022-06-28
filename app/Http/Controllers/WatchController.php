@@ -128,7 +128,7 @@ class WatchController extends Controller
         WatchRepos::update($watchs);
 
         return redirect()->action('WatchController@watchs')
-            ->with('msg', 'Update Successfully');;
+            ->with('msg', 'Update Successfully');
     }
 
 
@@ -165,11 +165,12 @@ class WatchController extends Controller
             $request->all(),
             [
                 'name' => ['required','min:8'],
-                'size' =>['required','digits:3,8','numeric'],
+                'size' =>['required','digits:2,8','numeric'],
                 'price'=>['required', 'numeric'],
-                'material'=>['required','alpha'],
-                'color' =>['required' ,'min:3'],
-                'image' =>['required'],
+                'material'=>['required'],
+                'color' =>['required' ,'min:3',
+                ],
+//                'image' =>['required'],
                 'description'=>['required']
             ],
             [

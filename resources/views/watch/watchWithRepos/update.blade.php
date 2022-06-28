@@ -9,6 +9,6 @@
       @include('watch.watchWithRepos.watchFields')
       <button type="submit" class="btn btn-dark">Submit</button>
     </form>
-    <a type="button" href="{{route('watchrepos.admins')}}" class="btn btn-info">&lt;&lt;&nbsp;Index</a>
+{{--    <a type="button" href="{{route('watchrepos.admins')}}" class="btn btn-info">&lt;&lt;&nbsp;Index</a>--}}
   </div>
 @endsection

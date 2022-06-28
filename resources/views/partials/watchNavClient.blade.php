@@ -29,7 +29,7 @@
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                         <a class="dropdown-item" href="{{route('client.hello')}}">New Arrivals</a>
                         <a class="dropdown-item" href="{{route('client.hello')}}">Best Sellers</a>
-                        <a class="dropdown-item" href="#">Watches</a>
+                        <a class="dropdown-item" href="{{route('client.index')}}">Watches</a>
                     </div>
                 </li>
 
@@ -40,7 +40,7 @@
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="{{route('client.hello')}}">New Arrivals</a>
                         <a class="dropdown-item" href="{{route('client.hello')}}">Best Sellers</a>
-                        <a class="dropdown-item" href="#">Watches</a>
+                        <a class="dropdown-item" href="{{route('client.index')}}">Watches</a>
                     </div>
                 </li>
                 <li class="nav-item dropdown">
@@ -51,7 +51,7 @@
                         <a class="dropdown-item" href="{{route('client.hello')}}">New Arrivals</a>
                         <a class="dropdown-item" href="{{route('client.hello')}}">Best Sellers</a>
 {{--                        <div class="dropdown-divider"></div>--}}
-                        <a class="dropdown-item" href="#">Watches</a>
+                        <a class="dropdown-item" href="{{route('client.index')}}">Watches</a>
                     </div>
                 </li>
 

@@ -116,8 +116,8 @@ class BrandController extends Controller
 
         $this->formValidate($request)->validate(); //shortcut
 
-        if ($request->has('file')) {
-            $image = $request->file->getClientoriginalName();
+        if($request->has('file')){
+            $image =  $request->file->getClientoriginalName();
             $request->file->move(public_path('assets/img/brands'), $image);
         }
         $request->merge(['image' => $image]);
@@ -125,13 +125,13 @@ class BrandController extends Controller
         $brands = (object)[
             'id' => $request->input('id'),
             'name' => $request->input('name'),
-            "image" => $request->input('image'),
+            'image' => $request->input('image'),
             'visible' => $request->input('visible')
         ];
         BrandRepos::update($brands);
 
         return redirect()->action('BrandController@brands')
-            ->with('msg', 'Update Successfully');;
+            ->with('msg', 'Update Successfully');
     }
 
 
@@ -171,13 +171,14 @@ class BrandController extends Controller
     {
         return Validator::make(
             $request->all(),
-            [
-                [
-                    'name' => ['required'],
-//                    'image'=>['required']
-                ],
-                'name.required'=>'Please enter Full name',
-            ]
+[]
+//            [
+//                [
+//                    'name' => ['required'],
+//////                    'image'=>['required']
+//                ],
+//                'name.required'=>'Please enter name',
+//            ]
         );
     }
 }
